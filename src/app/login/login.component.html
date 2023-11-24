@@ -1,0 +1,14 @@
+<!-- Afficher le bouton de déconnexion si l'utilisateur est connecté -->
+<div *ngIf="authService.isLoggedIn(); else loginFormTemplate">
+    <button (click)="logout()">Déconnexion</button>
+  </div>
+  
+  <!-- Template à afficher si l'utilisateur n'est pas connecté -->
+  <ng-template #loginFormTemplate>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input formControlName="email" type="email" placeholder="Email">
+      <input formControlName="password" type="password" placeholder="Mot de passe">
+      <button type="submit">Connexion</button>
+    </form>
+  </ng-template>
+  
